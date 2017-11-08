@@ -20,7 +20,7 @@ pipeline {
             agent {
                 docker {
                     image 'alexsuch/angular-cli:1.4.8'
-                    args ' -v $PWD:/app alexsuch/angular-cli:1.4.8 -w /app'
+                    args ' -v $PWD:/app -w /app'
                 }
             }
             steps {
