@@ -19,13 +19,13 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
-                    args '-v $PWD/spring-petclinic:/src -v $HOME/.m2:/root/.m2 -w /src'
+                    image 'alexsuch/angular-cli:1.4.8'
+                    args '-w /app -v $(pwd):/app alexsuch/angular-cli:1.4.8 '
                 }
             }
             steps {
                 sh '''
-                    mvn clean install spring-boot:repackage -DskipTests
+                    ng build
                 '''
             }
         }
@@ -101,4 +101,3 @@ pipeline {
         }
     }
 }
-
