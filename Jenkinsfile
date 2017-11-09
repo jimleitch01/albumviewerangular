@@ -29,29 +29,29 @@ pipeline {
                 '''
             }
         }
-        stage('Unit Test') {
-            agent {
-                docker {
-                    image 'maven:3-alpine'
-                    args '-v $PWD/spring-petclinic:/src -v $HOME/.m2:/root/.m2 -w /src'
-                }
-            }
-            steps {
-                sh 'sleep 8'
-            }
-        }
-        stage('Upload Artifacts') {
-            agent any
-            steps {
-                sh 'sleep 8'
-            }
-        }
-        stage('Build Container') {
-            agent any
-            steps {
-                sh 'docker build --tag=oelanbv-docker.jfrog.io/albumviewer-fe:1.0 -f Dockerfile.fatjar .'
-            }
-        }
+        // stage('Unit Test') {
+        //     agent {
+        //         docker {
+        //             image 'maven:3-alpine'
+        //             args '-v $PWD/spring-petclinic:/src -v $HOME/.m2:/root/.m2 -w /src'
+        //         }
+        //     }
+        //     steps {
+        //         sh 'sleep 8'
+        //     }
+        // }
+        // stage('Upload Artifacts') {
+        //     agent any
+        //     steps {
+        //         sh 'sleep 8'
+        //     }
+        // }
+        // stage('Build Container') {
+        //     agent any
+        //     steps {
+        //         sh 'docker build --tag=oelanbv-docker.jfrog.io/albumviewer-fe:1.0 -f Docker/runner/Dockerfile .'
+        //     }
+        // }
         // stage('Push Container') {
         //     agent any
         //     steps {
