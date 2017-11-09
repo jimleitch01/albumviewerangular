@@ -29,23 +29,26 @@ pipeline {
                 '''
             }
         }
-        // stage('Unit Test') {
-        //     agent {
-        //         docker {
-        //             image 'maven:3-alpine'
-        //             args '-v $PWD/spring-petclinic:/src -v $HOME/.m2:/root/.m2 -w /src'
-        //         }
-        //     }
-        //     steps {
-        //         sh 'sleep 8'
-        //     }
-        // }
-        // stage('Upload Artifacts') {
-        //     agent any
-        //     steps {
-        //         sh 'sleep 8'
-        //     }
-        // }
+        stage('Unit Test(fake)') {
+            agent {
+                docker {
+                    image 'alexsuch/angular-cli:1.4.8'
+                    args '-v $PWD:/app -w /app'
+                }
+            }
+            steps {
+                sh 'sleep 8'
+            }
+        }
+
+
+        stage('Upload Artifacts(fake)') {
+            agent any
+            steps {
+                sh 'sleep 8'
+            }
+        }
+
         // stage('Build Container') {
         //     agent any
         //     steps {
